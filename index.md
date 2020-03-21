@@ -9,4 +9,4 @@ Tyle dygresji wstępniakowej.
 PS: Jak będzie mi się chciało to zrobię wersję anglojęzyczną. ;)
 
 ## Prezentacja:<br/>
-1. [DevOps, CI/CD, Ansible i cała reszta](pl/lessons/lesson_one.md)
+1. [DevOps, Ansible i cała reszta](pl/lessons/lesson_one.md)
