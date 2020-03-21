@@ -1,4 +1,4 @@
-# Cześć Pierwsza: "DevOps, CI/CD, Ansible i cała reszta".
+# Cześć Pierwsza: "DevOps, Ansible i cała reszta".
 
 ## Tytułem wstępu.
 
