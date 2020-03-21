@@ -4,7 +4,7 @@
 
 Razem z modą na tak zwany "DevOps" objawiła się masa narzędzi, które ten cały "DevOps" mają wspierać. Osobiście jestem zwolennikiem tezy, że kultura "DevOps" to nic innego jak zastosowanie narzędzi typowo developerskich w pracy szeroko pojętego "operations" i w drugą stronę, uświadomienie developerom, że robiąc swoje w przemyślany sposób można bardzo ułatwić życie opsowcom. Żebyśmy się dobrze zrozumieli, większość tych narzędzi istniała w takiej lub innej formie od zarania dziejów IT i koncepcje tu prezentowane raczej nie są przełomem czy nowością (choć zazwyczaj tak są promowane), a większość ludzi z branży IT je zna i wykorzystuje, niekoniecznie świadomie. Moda na "DevOps" ubrała je tylko w ładne wdzianko, opatrzyła odpowiednią etykietką, co zwiększyło ich popularność i PR. Tak jest na przykład z CI/CD (Continues Integration/Continues Deployment), zakładające dostarczanie i integrację zmian raczej w momencie gdy owe zmiany powstaną niż gromadzenie ich w jakieś duże paczki, które dopiero wtedy są kompilowane, wrzucane na środowiska i testowane. Od kiedy pamiętam (a będzie już prawie 20 lat w branży) istniały jakieś systemy wersjonowania i zarządzania zmianą (CVS, Rational ClearCase, Subversion, Git, Mercurial, Perforce), automaty do tworzenia "build systemów" i śledzenia zależności (GNUMake, Ant, Maven), automaty do rejestracji zmian (Bugzilla, Jira), czy też w końcu narzędzia do instalacji aplikacji na środowiskach (RPM, PiP, APT, Yum, itp...). Dużo firm miało własne, domowe rozwiązania, które skutecznie wykorzystywały i spinały te narzędzia w jednolite systemy.
 
-Postępująca automatyzacja procesów wytwarzania oprogramowania doprowadziła do powstania rozwiązań jej dedykowanych. Powstały więc tak zwane **systemy dostawcze** (z ang. provisioning systems) wspomagające zarządzanie dostawami i konfigurację środowisk oraz aplikacji. Najpopularniejsze z nich to Chef ([https://www.chef.io/](https://www.chef.io/)), Puppet ([https://puppet.com/](https://puppet.com/)) i Ansible ([](https://www.ansible.com/)). My zajmiemy się tym ostanim.
+Postępująca automatyzacja procesów wytwarzania oprogramowania doprowadziła do powstania rozwiązań jej dedykowanych. Powstały więc tak zwane **systemy dostawcze** (z ang. provisioning systems) wspomagające zarządzanie dostawami i konfigurację środowisk oraz aplikacji. Najpopularniejsze z nich to Chef ([https://www.chef.io/](https://www.chef.io/)), Puppet ([https://puppet.com/](https://puppet.com/)) i Ansible ([https://www.ansible.com/](https://www.ansible.com/)). My zajmiemy się tym ostanim.
 
 Wszystkie systemy dostawcze sprowadzają się do jednego: **Przechowywania stanu i logistyki środowisk w formie opisowej**.
 Cała reszta mechanizmów jest pochodną tego podstawowego zadania. Taki sposób zarządzania środowiskami określa się jako "infrastructure as a code" (**IAAC**). Tu właśnie dochodzimy do Ansible'a, który jest modelowym przykładem takiego systemu.
@@ -16,11 +16,11 @@ Ansible to tak naprawdę zestaw modułów i skryptów napisanych w Pythonie co m
 W dokumentacji do Ansible można wyczytać, że jest to narzędzie typu "agentless" co nie do końca jest prawdą. Fakt, na maszynach docelowych nie ma żadnego rezydentnego demona czy innego procesu, który jest wymagany do komunikacji. Nie oznacza to jednak, że agenta w ogóle nigdy nie ma. Użyto tu pewnej sztuczki ponieważ agent jest umieszczany na maszynie docelowej tylko na czas potrzebny do wykonania zadań, a zasada działania jest prosta. Na masterze wskazywane są zadania i moduły, które mają być użyte do ich wykonania. Ansible przesyła to co potrzebuje do katalogu tymczasowego na maszynie docelowej, wykonuje zadania i po ich zakończeniu obojętne, pozytywnym czy negatywnym, usuwa ten katalog wraz z zawartością.
 Ma to konsekwencje w postaci dodatkowego narzutu (raczej niewielkiego) w ruchu sieciowym oraz prowadzi czasem do błędów gdy moduł, który ma być użyty, wymaga dodatkowych, niestandardowych elementów na maszynie docelowej albo nie ma dostępu do wymaganych przezeń narzędzi systemowych.
 
-Polecam ten artykuł: https://www.slashroot.in/how-does-ansible-work jako lekturę uzupełniającą.
+Polecam ten artykuł: [https://www.slashroot.in/how-does-ansible-work](https://www.slashroot.in/how-does-ansible-work) jako lekturę uzupełniającą.
 
 ## Instalacja i konfiguracja Ansible.
 
-Co do instalacji - odsyłam do dokumentacji Ansible (https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installation-guide ).
+Co do instalacji - odsyłam do dokumentacji Ansible ([https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installation-guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installation-guide)).
 
 Z konfiguracją jednak wiąże się kilka dość istotnych kwestii, które warto wymienić.
 
@@ -49,7 +49,8 @@ Dość użyteczną funkcją jest komenda:
 
 Pokazuje ona tylko te parametry konfiguracyjne, które różnią się od domyślnych.
 
-Jeśli chodzi o opcje konfiguracyjne to jest ich mnóstwo i nie ma sensu opisywać każdego z nich. Kompletny wzór pliku ansible.cfg znajdziecie pod tym adresem: https://github.com/moarsoft/catg-example-files/blob/master/ansible.cfg
+Jeśli chodzi o opcje konfiguracyjne to jest ich mnóstwo i nie ma sensu opisywać każdego z nich. Kompletny wzór pliku ansible.cfg znajdziecie pod tym adresem: [https://github.com/moarsoft/catg-example-files/blob/master/ansible.cfg
+](https://github.com/moarsoft/catg-example-files/blob/master/ansible.cfg)
 
 W dalszych częściach będę czasem odwoływał się do konfiguracji więc na razie wystarczy by było wiadomo gdzie ją znaleźć i jak podglądać.
 
@@ -118,7 +119,7 @@ Kolejną alternatywą jest użycie "sudo", o ile możemy. Służy do tego przeł
 
     ansible m setup --become
 
-Można np zapytać o hasło do sudo przez "--ask-become-pass".
+Można np zapytać o hasło do sudo przez "--ask-become-pass" oraz ustawić innego użytkownika "--become-user".
 
 Inne polecenia CLI:
 
