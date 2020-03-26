@@ -139,7 +139,7 @@ Po szczegóły odsyłam do dokumentacji YAMLa ([https://yaml.org/spec/1.2/spec.h
 
 ## Dokumenty w YAML.
 
-Upraszczając. Początek dokumentu w YAML oznaczamy przy użyciu {% raw %}---{% endraw %} , zaś koniec {% raw %}...{% endraw %} . W jednym pliku można zawrzeć kilka dokumentów.
+Upraszczając. Początek dokumentu w YAML oznaczamy przy użyciu `---` , zaś koniec `...` . W jednym pliku można zawrzeć kilka dokumentów.
 
 	---
 	# one doc
@@ -149,8 +149,8 @@ Upraszczając. Początek dokumentu w YAML oznaczamy przy użyciu {% raw %}---{% 
 	...
 	
 Tak naprawdę jest to trochę bardziej skomplikowane (znów, odsyłam do dokumentacji YAML po szczegóły), ale nam
-wystarczy wiedza, że aby coś było zinterpretowane jako dokument YAML musi zaczynać się od {% raw %}---{% endraw %}. 
-Kończenie dokumentu przy użyciu {% raw %}...{% endraw %} to dobra praktyka, ale nie jest to konieczne i brak nie spowoduje błędu parsera.
+wystarczy wiedza, że aby coś było zinterpretowane jako dokument YAML musi zaczynać się od `---`. 
+Kończenie dokumentu przy użyciu `...` to dobra praktyka, ale nie jest to konieczne i brak nie spowoduje błędu parsera.
 
 
 Polecam pobawić się trochę z YAMLem, żeby oswoić się ze składnią. Można użyć walidatora składni online
@@ -164,12 +164,12 @@ Na przykład "{" oznacza w YAMLu początek słownika, ale Ansible odwołuje się
 To wymusza każdorazowe cytowanie odwołań do zmiennych w Ansible:
 
 	variable: {% raw %}{{ variable }}{% endraw %} # Error!
-	variable: "{{ variable }}" # Correct!
+	variable: "{% raw %}{{ variable }}{% endraw %}" # Correct!
 	
 Co więcej dotyczy to całych wartości, które muszą być objęte cytowaniem:
 
-	variable: "{{ variable }}"/path/element # Wrong, error!
-	variable: "{{ variable }}/path/element" # Correct.
+	variable: "{% raw %}{{ variable }}{% endraw %}"/path/element # Wrong, error!
+	variable: "{% raw %}{{ variable }}{% endraw %}/path/element" # Correct.
 	
 Jeśli zaś używamy cytowania, to znaki specjalne muszą zostać "wyłączone" (wyescapowane). 
 Ogólnie jeśli nie chcemy, żeby coś było zinterpretowane przez Ansible "domyślnie" należy użyć cytowania. 
@@ -210,11 +210,11 @@ wstawioną we właściwe miejsca.
 Jinja2 udostępnia w Ansible swoje wyrażenia do wykorzystania także w deskryptorach zadań. 
 Dzięki temu w Ansible w ogóle możemy odwoływać się do zmiennych poprzez:
 
-	{{ variable }}
+	{% raw %}{{ variable }}{% endraw %}
 	
 Co więcej, dzięki tzw filtrom, możemy tymi zmiennymi manipulować.
 
-	{{ some_string | lower }} # convert string to lowercase
-    {{ some_variable | default(7) }} # Set default value to 7 if variable not defined
+	{% raw %}{{ some_string | lower }}{% endraw %} # convert string to lowercase
+    {% raw %}{{ some_variable | default(7) }}{% endraw %} # Set default value to 7 if variable not defined
 
 Daje to właściwe nieograniczone możliwości.
