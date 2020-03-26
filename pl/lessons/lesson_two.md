@@ -139,7 +139,7 @@ Po szczegóły odsyłam do dokumentacji YAMLa ([https://yaml.org/spec/1.2/spec.h
 
 ## Dokumenty w YAML.
 
-Upraszczając. Początek dokumentu w YAML oznaczamy przy użyciu '---' , zaś koniec '...' . W jednym pliku można zawrzeć kilka dokumentów.
+Upraszczając. Początek dokumentu w YAML oznaczamy przy użyciu `---` , zaś koniec `...` . W jednym pliku można zawrzeć kilka dokumentów.
 
 	---
 	# one doc
@@ -149,8 +149,8 @@ Upraszczając. Początek dokumentu w YAML oznaczamy przy użyciu '---' , zaś ko
 	...
 	
 Tak naprawdę jest to trochę bardziej skomplikowane (znów, odsyłam do dokumentacji YAML po szczegóły), ale nam
-wystarczy wiedza, że aby coś było zinterpretowane jako dokument YAML musi zaczynać się od '---' . 
-Kończenie dokumentu przy użyciu '...' to dobra praktyka, ale nie jest to konieczne i brak nie spowoduje błędu parsera.
+wystarczy wiedza, że aby coś było zinterpretowane jako dokument YAML musi zaczynać się od `---` . 
+Kończenie dokumentu przy użyciu `...` to dobra praktyka, ale nie jest to konieczne i brak nie spowoduje błędu parsera.
 
 
 Polecam pobawić się trochę z YAMLem, żeby oswoić się ze składnią. Można użyć walidatora składni online
@@ -160,10 +160,10 @@ Polecam pobawić się trochę z YAMLem, żeby oswoić się ze składnią. Można
 
 YAML używany w Ansible ma kilka kruczków, na które należy uważać. 
 Wynikają one ze specyfiki silnika i parsera Ansible, który używa elementów wspólnych z YAMLem do różnych celów. 
-Na przykład "{" oznacza w YAMLu początek słownika, ale Ansible odwołuje się do zmiennych używając składni Jinja2 - {{ zmienna }}. 
+Na przykład "{" oznacza w YAMLu początek słownika, ale Ansible odwołuje się do zmiennych używając składni Jinja2 - `{{ zmienna }}`. 
 To wymusza każdorazowe cytowanie odwołań do zmiennych w Ansible:
 
-	variable: {{ variable }} # Error!
+	variable: `{{ variable }}` # Error!
 	variable: "{{ variable }}" # Correct!
 	
 Co więcej dotyczy to całych wartości, które muszą być objęte cytowaniem:
