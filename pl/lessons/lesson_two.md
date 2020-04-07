@@ -4,7 +4,7 @@
 
 Zanim przejdziemy do dalszych zabaw z Ansible konieczne jest zapoznanie się ze składnią i formami zapisu z jakich przyjdzie korzystać.
 
-Ansible korzysta z trzech form zapisu. Najważniejszym jest YAML ([https://yaml.org/](https://yaml.org), obok którego pojawia się także format "INI" ([https://en.wikipedia.org/wiki/INI_file](https://en.wikipedia.org/wiki/INI_file)). Trzecim formatem jest Jinja2 ([https://jinja.palletsprojects.com/en/2.11.x/](https://jinja.palletsprojects.com/en/2.11.x/)) czyli język opisu szablonów (**template**) znany większości osób używających Pythona.
+Ansible korzysta z trzech form zapisu. Najważniejszą z nich jest YAML ([https://yaml.org/](https://yaml.org), obok którego pojawia się także format "INI" ([https://en.wikipedia.org/wiki/INI_file](https://en.wikipedia.org/wiki/INI_file)). Trzecim formatem jest Jinja2 ([https://jinja.palletsprojects.com/en/2.11.x/](https://jinja.palletsprojects.com/en/2.11.x/)) czyli język opisu szablonów (**template**) znany większości osób używających Pythona.
 
 Polecam zapoznać się z nimi dodatkowo samodzielnie ponieważ tutaj wspomnę tutaj tylko o podstawach koniecznych dla zrozumienia dalszych etapów zapoznawania się z Ansible.
 
@@ -187,7 +187,7 @@ Tu polecam zapoznanie się z dokumentacją Ansible odnośnie YAMLa: [https://doc
 
 ## Jinja2.
 
-Znany pythonowcom język znaczników używanych w szablonach pozwala na dynamiczne uzupełnianie zawartości.
+Znany pythonowcom język znaczników używanych w szablonach pozwala na dynamiczne uzupełnianie ich zawartości.
 Ponownie, jest to zbyt obszerny temat żeby wchodzić w szczegóły więc postaram się ograniczyć do niezbędnego minimum. 
 Zainteresowanych odsyłam do dokumentacji: [https://jinja.palletsprojects.com/en/2.11.x/](https://jinja.palletsprojects.com/en/2.11.x/)
 
@@ -218,3 +218,5 @@ Co więcej, dzięki tzw filtrom, możemy tymi zmiennymi manipulować.
     {% raw %}{{ some_variable | default(7) }}{% endraw %} # Set default value to 7 if variable not defined
 
 Daje to właściwe nieograniczone możliwości.
+
+Na tym zakończymy część poświęconą językom używanym w Ansible.
